@@ -61,6 +61,8 @@ void onPress() async {
     print(e);
   } on HiNetError catch (e) {
     print(e);
+  } catch (e) {
+    print(e);
   }
   // if (kDebugMode) {
   //   print(result);
