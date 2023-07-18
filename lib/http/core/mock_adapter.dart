@@ -9,9 +9,10 @@ class MockAdapter extends HiNetAdapter {
   @override
   Future<HiNetResponse<T>> send<T>(BaseRequest request) {
     // TODO: implement send
-    return Future.delayed(const Duration(microseconds: 1000), () {
-      var data = {"code": 0, "message": "success"};
-      return HiNetResponse(data: data, request: request, statusCode: 200);
+    return Future<HiNetResponse<T>>.delayed(const Duration(microseconds: 5000),
+        () {
+      dynamic data = {"code": 401, "message": "success"};
+      return HiNetResponse(data: data, request: request, statusCode: 401);
     });
   }
 // print("objecthe");

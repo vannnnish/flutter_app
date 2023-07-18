@@ -1,6 +1,6 @@
 import 'package:english_words/english_words.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/http/core/hi_error.dart';
 import 'package:flutter_app/http/core/hi_net.dart';
 import 'package:flutter_app/http/request/test_request.dart';
 import 'package:provider/provider.dart';
@@ -51,9 +51,18 @@ class MyHomePage extends StatelessWidget {
 
 void onPress() async {
   TestRequest request = TestRequest();
-  request.addHeader("aa", "ddd").addHeader("bb", "333");
-  var result = await HiNet.getInstance().fire(request);
-  if (kDebugMode) {
+  request.add("aa", "ddd").add("bb", "333").add("reqestPram", "12");
+  try {
+    var result = await HiNet.getInstance().fire(request);
     print(result);
+  } on NeedAuth catch (e) {
+    print(e);
+  } on NeedLogin catch (e) {
+    print(e);
+  } on HiNetError catch (e) {
+    print(e);
   }
+  // if (kDebugMode) {
+  //   print(result);
+  // }
 }
