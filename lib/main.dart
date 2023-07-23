@@ -1,12 +1,26 @@
+import 'dart:convert';
+
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/http/core/hi_error.dart';
 import 'package:flutter_app/http/core/hi_net.dart';
 import 'package:flutter_app/http/request/test_request.dart';
+import 'package:flutter_app/model/owner.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  test();
   runApp(MyApp());
+}
+
+void test() {
+  const jsonStr = "{\"name\":\"tt\"}";
+  Map<String, dynamic> jsonMap = jsonDecode(jsonStr);
+  print("name:${jsonMap['name']}");
+  var str = jsonEncode(jsonMap);
+  print('json:$str');
+
+  var own = Owner.fromJson(jsonMap);
 }
 
 class MyApp extends StatelessWidget {
@@ -51,7 +65,7 @@ class MyHomePage extends StatelessWidget {
 
 void onPress() async {
   TestRequest request = TestRequest();
-  request.add("aa", "ddd").add("bb", "333").add("reqestPram", "12");
+  request.add("aa", "ddd").add("bb", "333").add("requestPrams", "12");
   try {
     var result = await HiNet.getInstance().fire(request);
     print(result);
