@@ -14,3 +14,7 @@ class Result {
 
   Map<String, dynamic> toJson() => _$ResultToJson(this);
 }
+
+/*
+*  运行 flutter packages pub run build_runner build 生成
+* */
