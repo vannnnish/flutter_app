@@ -1,18 +1,18 @@
 import 'package:flutter_app/http/request/base_request.dart';
 
-class LoginRequest extends BaseRequest {
+class NoticeRequest extends BaseRequest {
   @override
   HttpMethod httpMethod() {
-    return HttpMethod.POST;
+    return HttpMethod.GET;
   }
 
   @override
   bool needLogin() {
-    return false;
+    return true;
   }
 
   @override
   String path() {
-    return "/uapi/user/login";
+    return '/user/notice';
   }
 }

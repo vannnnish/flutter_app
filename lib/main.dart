@@ -8,6 +8,7 @@ import 'package:flutter_app/http/core/hi_net.dart';
 import 'package:flutter_app/http/dao/login_dao.dart';
 import 'package:flutter_app/http/request/test_request.dart';
 import 'package:flutter_app/model/owner.dart';
+import 'package:flutter_app/page/registration_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         ),
-        home: MyHomePage(),
+        home: RegistrationPage(),
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 
+import '../dao/login_dao.dart';
+
 enum HttpMethod { GET, POST, DELETE }
 
 abstract class BaseRequest {
@@ -34,6 +36,10 @@ abstract class BaseRequest {
     } else {
       uri = Uri.http(authority(), pathStr, params);
     }
+    if (needLogin()) {
+      // 给需要登录的接口携带登录令牌
+      addHeader(LoginDao.boardingPass, LoginDao.getBoardingPass());
+    }
     if (kDebugMode) {
       print("url:${uri.toString()}");
     }
@@ -57,7 +63,7 @@ abstract class BaseRequest {
 
   // 添加header
   BaseRequest addHeader(String k, Object v) {
-    params[k] = v.toString();
+    header[k] = v.toString();
     return this;
   }
 }
