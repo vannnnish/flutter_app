@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/widget/appbar.dart';
+import 'package:flutter_app/widget/login_effect.dart';
 
 import '../widget/login_input.dart';
 
@@ -11,6 +12,8 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  bool protected = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +24,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
         child: ListView(
           children: [
             // 自适应键盘，防止遮挡
+            LoginEffect(
+              protect: protected,
+            ),
             // 用户名
             LoginInput(
               title: "用户名",
@@ -37,6 +43,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
               lineStretch: true,
               onChanged: (text) {
                 print(text);
+              },
+              focusChanged: (focus) {
+                setState(() {
+                  protected = focus;
+                });
               },
             )
           ],
