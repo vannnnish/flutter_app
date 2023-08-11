@@ -61,7 +61,11 @@ class MyApp extends StatelessWidget {
           // primarySwatch: Colors.blue,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         ),
-        home: RegistrationPage(),
+        home: RegistrationPage(
+          onJumpToLogin: () {
+            print("object");
+          },
+        ),
       ),
     );
   }
