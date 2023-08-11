@@ -28,6 +28,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
               onChanged: (text) {
                 print(text);
               },
+              focusChanged: (bool value) {
+                print("当前值:$value");
+              },
             ),
             // 密码
             LoginInput(
@@ -37,6 +40,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
               lineStretch: true,
               onChanged: (text) {
                 print(text);
+              },
+              focusChanged: (bool value) {
+                print("当前值:$value");
               },
             )
           ],

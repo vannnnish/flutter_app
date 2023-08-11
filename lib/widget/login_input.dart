@@ -5,7 +5,7 @@ class LoginInput extends StatefulWidget {
   final String title;
   final String hint;
   final ValueChanged<String> onChanged;
-  final ValueChanged<bool>? focusChanged;
+  final ValueChanged<bool> focusChanged;
   final bool lineStretch;
   final bool obscureText;
   final TextInputType? keyboardType;
@@ -15,7 +15,7 @@ class LoginInput extends StatefulWidget {
       required this.title,
       required this.hint,
       required this.onChanged,
-      this.focusChanged,
+      required this.focusChanged,
       this.lineStretch = false,
       this.obscureText = false,
       this.keyboardType});

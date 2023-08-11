@@ -13,8 +13,8 @@ import 'package:provider/provider.dart';
 
 void main() {
   HiCache.preInit();
-  test();
-  testLogin();
+  // test();
+  // testLogin();
   runApp(MyApp());
 }
 
@@ -58,6 +58,7 @@ class MyApp extends StatelessWidget {
         title: 'Namer App',
         theme: ThemeData(
           useMaterial3: true,
+          // primarySwatch: Colors.blue,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         ),
         home: RegistrationPage(),
