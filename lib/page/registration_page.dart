@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/widget/appbar.dart';
+import 'package:flutter_app/widget/login_button.dart';
 import 'package:flutter_app/widget/login_effect.dart';
 
 import '../http/core/hi_error.dart';
@@ -93,7 +94,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-              child: _LoginButton(),
+              child: LoginButton(
+                "注册",
+                enable: true,
+                onPress: send,
+              ),
             ),
           ],
         ),

@@ -11,32 +11,23 @@ class LoginDao {
   static const boardingPass = "boarding-pass";
 
   static login(String userName, String password) {
-    return _send(userName, password);
+    return _send(userName, password, "login");
   }
 
   static registration(
       String userName, String password, String iMoocId, String orderId) {
-    return _send(userName, password, iMoocId: iMoocId, orderId: orderId);
+    return _send(userName, password, "register");
   }
 
-  static _send(
-    String userName,
-    String password, {
-    iMoocId,
-    orderId,
-  }) async {
+  static _send(String userName, String password, String loginOrRegister) async {
     BaseRequest request;
-    if (iMoocId != null && orderId != null) {
+    if (loginOrRegister == "register") {
       request = RegistrationRequest();
     } else {
       request = LoginRequest();
     }
 
-    request
-        .add("userName", userName)
-        .add("password", password)
-        .add("imoocId", iMoocId)
-        .add("orderId", orderId);
+    request.add("userName", userName).add("password", password);
     var result = await HiNet.getInstance().fire(request);
     print(result);
     if (result['code'] == 0 && result['data'] != null) {
